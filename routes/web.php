@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\SocioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,5 +19,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::resource('socios', SocioController::class);
 Route::resource('cursos', CursoController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
