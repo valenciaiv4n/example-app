@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Curso
+ * Class Socio
  *
- * @property $numero
- * @property $deporte
- * @property $dia
- * @property $matriculaprofesor
+ * @property $matricula
+ * @property $nombre
+ * @property $domicilio
  *
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Curso extends Model
+class Socio extends Model
 {
     
     protected $perPage = 20;
@@ -25,8 +24,10 @@ class Curso extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['numero', 'deporte', 'dia', 'matriculaprofesor'];
-    protected $primaryKey = "numero";
+    protected $fillable = ['matricula', 'nombre', 'domicilio'];
+    protected $primaryKey = "matricula";
     public $timestamps = false;
+   // created_at update_at timestamp
+    
 
 }

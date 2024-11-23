@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Cursos
+    Socios
 @endsection
 
 @section('content')
@@ -13,11 +13,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Cursos') }}
+                                {{ __('Socios') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('cursos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('socios.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -36,32 +36,31 @@
                                     <tr>
                                         <th>No</th>
                                         
-									<th >Numero</th>
-									<th >Deporte</th>
-									<th >Dia</th>
-									<th >Matriculaprofesor</th>
+									<th >Matricula</th>
+									<th >Nombre</th>
+									<th >Domicilio</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($cursos as $curso)
+                                    @foreach ($socios as $socio)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-										<td >{{ $curso->numero }}</td>
-										<td >{{ $curso->deporte }}</td>
-										<td >{{ $curso->dia }}</td>
-										<td >{{ $curso->matriculaprofesor }}</td>
-                                        <td>
-                                            <form action="{{ route('cursos.destroy', $curso->numero) }}" method="POST">
-                                                <a class="btn btn-sm btn-primary " href="{{ route('cursos.show', $curso->numero) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                <a class="btn btn-sm btn-success" href="{{ route('cursos.edit', $curso->numero) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
-                                            </form>
-                                        </td>
+										<td >{{ $socio->matricula }}</td>
+										<td >{{ $socio->nombre }}</td>
+										<td >{{ $socio->domicilio }}</td>
+
+                                            <td>
+                                                <form action="{{ route('socios.destroy', $socio->matricula) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('socios.show', $socio->matricula) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('socios.edit', $socio->matricula) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -69,7 +68,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $cursos->withQueryString()->links() !!}
+                {!! $socios->withQueryString()->links() !!}
             </div>
         </div>
     </div>

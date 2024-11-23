@@ -1,23 +1,23 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Cursos
+    Inscriptos
 @endsection
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-flumatriculasocio">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
-                            <span id="card_title">
-                                {{ __('Cursos') }}
+                            <span matriculasocio="card_title">
+                                {{ __('Inscriptos') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('cursos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('inscriptos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -36,32 +36,31 @@
                                     <tr>
                                         <th>No</th>
                                         
+									<th >Matriculasocio</th>
 									<th >Numero</th>
-									<th >Deporte</th>
-									<th >Dia</th>
-									<th >Matriculaprofesor</th>
+									<th >Matricula</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($cursos as $curso)
+                                    @foreach ($inscriptos as $inscripto)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-										<td >{{ $curso->numero }}</td>
-										<td >{{ $curso->deporte }}</td>
-										<td >{{ $curso->dia }}</td>
-										<td >{{ $curso->matriculaprofesor }}</td>
-                                        <td>
-                                            <form action="{{ route('cursos.destroy', $curso->numero) }}" method="POST">
-                                                <a class="btn btn-sm btn-primary " href="{{ route('cursos.show', $curso->numero) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                <a class="btn btn-sm btn-success" href="{{ route('cursos.edit', $curso->numero) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
-                                            </form>
-                                        </td>
+										<td >{{ $inscripto->matriculasocio }}</td>
+										<td >{{ $inscripto->numero }}</td>
+										<td >{{ $inscripto->matricula }}</td>
+
+                                            <td>
+                                                <form action="{{ route('inscriptos.destroy', $inscripto->matriculasocio) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('inscriptos.show', $inscripto->matriculasocio) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('inscriptos.edit', $inscripto->matriculasocio) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -69,7 +68,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $cursos->withQueryString()->links() !!}
+                {!! $inscriptos->withQueryString()->links() !!}
             </div>
         </div>
     </div>

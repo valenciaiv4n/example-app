@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Cursos
+    Libros
 @endsection
 
 @section('content')
@@ -13,11 +13,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Cursos') }}
+                                {{ __('Libros') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('cursos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('libros.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -36,32 +36,33 @@
                                     <tr>
                                         <th>No</th>
                                         
-									<th >Numero</th>
-									<th >Deporte</th>
-									<th >Dia</th>
-									<th >Matriculaprofesor</th>
+									<th >Codigo</th>
+									<th >Titulo</th>
+									<th >Autor</th>
+									<th >Editorial</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($cursos as $curso)
+                                    @foreach ($libros as $libro)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-										<td >{{ $curso->numero }}</td>
-										<td >{{ $curso->deporte }}</td>
-										<td >{{ $curso->dia }}</td>
-										<td >{{ $curso->matriculaprofesor }}</td>
-                                        <td>
-                                            <form action="{{ route('cursos.destroy', $curso->numero) }}" method="POST">
-                                                <a class="btn btn-sm btn-primary " href="{{ route('cursos.show', $curso->numero) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                <a class="btn btn-sm btn-success" href="{{ route('cursos.edit', $curso->numero) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
-                                            </form>
-                                        </td>
+										<td >{{ $libro->codigo }}</td>
+										<td >{{ $libro->titulo }}</td>
+										<td >{{ $libro->autor }}</td>
+										<td >{{ $libro->editorial }}</td>
+
+                                            <td>
+                                                <form action="{{ route('libros.destroy', $libro->codigo) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('libros.show', $libro->codigo) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('libros.edit', $libro->codigo) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -69,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $cursos->withQueryString()->links() !!}
+                {!! $libros->withQueryString()->links() !!}
             </div>
         </div>
     </div>

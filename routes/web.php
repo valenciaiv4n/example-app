@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\LibroController;
+use App\Http\Controllers\SocioController;
+use App\Http\Controllers\InscriptoController;
+use App\Http\Controllers\ProfesoreController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,5 +22,12 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+
+Route::resource('socios', SocioController::class);
+
 Route::resource('cursos', CursoController::class);
+Route::resource('libros', LibroController::class);
+Route::resource('inscriptos', InscriptoController::class);
+Route::resource('profesores', ProfesoreController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

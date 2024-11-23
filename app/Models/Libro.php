@@ -5,28 +5,30 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Curso
+ * Class Libro
  *
- * @property $numero
- * @property $deporte
- * @property $dia
- * @property $matriculaprofesor
+ * @property $codigo
+ * @property $titulo
+ * @property $autor
+ * @property $editorial
  *
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Curso extends Model
+class Libro extends Model
 {
     
     protected $perPage = 20;
+    protected $primaryKey = 'codigo';
+    protected $column = 'codigo';
+
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $fillable = ['numero', 'deporte', 'dia', 'matriculaprofesor'];
-    protected $primaryKey = "numero";
-    public $timestamps = false;
+    protected $fillable = ['codigo', 'titulo', 'autor', 'editorial'];
+
 
 }
